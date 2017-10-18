@@ -24,7 +24,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'buziness' ); ?></a>
 	
-		<header id="masthead" class="site-header">
+		<header id="masthead" class="site-header" >
 			<div class="main-header">
 				<div class="site-branding">
 					<?php
@@ -44,11 +44,11 @@
 				</div><!-- .site-branding -->
 				<div class="navigation">
 
-	<!-- 				<div class="search-top">
+<!-- 					<div class="search-top">
 							<div class="search-icon"><i class="fa fa-search"></i></div> 
 							<form class="s-form" action="<?php echo site_url(); ?>" method="get" role="search"  id="searchform"> 
 								<div class="search-form"> 
-									<input type="text" id="" placeholder="<?php esc_attr_e( 'Search', 'codepress-corporate' ); ?>" value="<?php echo the_search_query(); ?>" name="s" >
+									<input type="text" id="" placeholder="<?php esc_attr_e( 'Search', 'buziness' ); ?>" value="<?php echo the_search_query(); ?>" name="s" >
 								</div> 
 							</form> 
 						</div>  -->
@@ -57,7 +57,7 @@
 						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php 
 						// esc_html_e( 'Primary Menu', 'buziness' );  
 						 // _e( '<i class="fa fa-navicon"></i>', 'buziness' );
-						 _e('<div id="nav-icon"><span></span><span></span><span></span><span></span></div>'); 
+						 echo '<div id="nav-icon"><span></span><span></span><span></span><span></span></div>'; 
 						?></button>
 						<?php
 							wp_nav_menu( array(

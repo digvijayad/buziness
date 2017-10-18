@@ -35,7 +35,7 @@ $layout_class = buziness_sidebar_layout_class();
 	<?php if( !( is_home() ) ) { ?>
 		<!-- Breadcrumb-start -->
 		
-		<section class="breadcrumb" <?php echo (!empty($image_array[0])) ? 'style="background: url(' . esc_url($image_array[0]) .');': ''; ?>>
+		<section class="breadcrumb" <?php echo (!empty($image_array[0])) ? 'style="background: url(' . esc_url($image_array[0]) .');': ''; ?>">
 <!-- <section class="breadcrumb" style="background: url( 'http://localhost/sbdc/wp-content/uploads/2017/10/banner.jpg' );"> -->
 			<div class="wrapper">
 				<div class="breadcrumb-menu">

@@ -9,7 +9,19 @@
          return '';
       }
    }
+    //select sanitization function
+	function buziness_sanitize_select( $input, $setting ){
+	 
+	    //input must be a slug: lowercase alphanumeric characters, dashes and underscores are allowed only
+	    $input = sanitize_key($input);
 
+	    //get the list of possible select options 
+	    $choices = $setting->manager->get_control( $setting->id )->choices;
+	                     
+	    //return input if valid or return default option
+	    return ( array_key_exists( $input, $choices ) ? $input : $setting->default );                
+	     
+	}
  /** Sanitize textarea */ 
   function buziness_sanitize_textarea( $input ) {
 
@@ -33,7 +45,7 @@
   $output = wp_kses_post( $input, $buziness_allowedposttags);
   return $output;
   }
-  //add_filter( 'of_sanitize_textarea', 'buziness_sanitize_textarea' );
+  // add_filter( 'of_sanitize_textarea', 'buziness_sanitize_textarea' );
 
 
 /** Sanitization google map */

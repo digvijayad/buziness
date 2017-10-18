@@ -134,72 +134,40 @@ add_action( 'after_setup_theme', 'buziness_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function buziness_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Right Sidebar', 'buziness' ),
-		'id'            => 'right-sidebar',
-		'description'   => esc_html__( 'Show Right Sidebar.', 'buziness' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
 
-	register_sidebar( array(
-		'name'          => esc_html__( 'Left Sidebar', 'buziness' ),
-		'id'            => 'left-sidebar',
-		'description'   => esc_html__( 'Show Left Sidebar.', 'buziness' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-
-	register_sidebar( array(
-		'name'          => esc_html__( 'Footer 1', 'buziness' ),
-		'id'            => 'footer-1',
-		'description'   => esc_html__( 'Show Widgets on the Top Left Footer.', 'buziness' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Footer 2', 'buziness' ),
-		'id'            => 'footer-2',
-		'description'   => esc_html__( 'Show Widgets on the Top center Footer.', 'buziness' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Footer 3', 'buziness' ),
-		'id'            => 'footer-3',
-		'description'   => esc_html__( 'Show Widgets on the Top Right Footer.', 'buziness' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Footer Middle', 'buziness' ),
-		'id'            => 'footer-middle-1',
-		'description'   => esc_html__( 'Show Widgets on the Middle Footer.', 'buziness' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-
+	buziness_register_sidebar(esc_html__( 'Right Sidebar', 'buziness' ), esc_html__( 'Show Right Sidebar.', 'buziness' ));
+	buziness_register_sidebar(esc_html__( 'Left Sidebar', 'buziness' ), esc_html__( 'Show Left Sidebar.', 'buziness' ));
+	buziness_register_sidebar(esc_html__( 'Footer 1', 'buziness' ), esc_html__( 'Show Widgets on the Top Left Footer.', 'buziness' ));
+	buziness_register_sidebar(esc_html__( 'Footer 2', 'buziness' ), esc_html__( 'Show Widgets on the Top center Footer.', 'buziness' ));
+	buziness_register_sidebar(esc_html__( 'Footer 3', 'buziness' ), esc_html__( 'Show Widgets on the Top Right Footer.', 'buziness' ));
+	buziness_register_sidebar(esc_html__( 'Footer 1 Home', 'buziness' ), esc_html__( 'Show Widgets on the Top Left homepage Footer.', 'buziness' ));
+	buziness_register_sidebar(esc_html__( 'Footer 2 Home', 'buziness' ), esc_html__( 'Show Widgets on the Top center homepage Footer.', 'buziness' ));
+	buziness_register_sidebar(esc_html__( 'Footer 3 Home', 'buziness' ), esc_html__( 'Show Widgets on the Top Right homepage Footer.', 'buziness' ));
+	buziness_register_sidebar(esc_html__( 'Footer Middle', 'buziness' ), esc_html__( 'Show Widgets on the Middle Footer.', 'buziness' ));
 
 }
 add_action( 'widgets_init', 'buziness_widgets_init' );
+
+function buziness_register_sidebar($text, $description){
+
+	register_sidebar( array(
+		'name'          => $text,
+		'id'            => strtolower(preg_replace('/\s+/', '-', $text)),
+		'description'   => $description,
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
 
 /**
  * Enqueue scripts and styles.
  */
 function buziness_scripts() {
 	wp_enqueue_style( 'buziness-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'buziness-colors', get_template_directory_uri() . '/css/colors.css' );
+	// wp_enqueue_style( 'buziness-colors',get_template_directory_uri() . '/css/colors.css'  );
 
 	wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 	wp_enqueue_style('animate', get_template_directory_uri() . '/css/animate.css');
@@ -224,6 +192,7 @@ function buziness_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	// require get_template_directory() . '/inc/colors.php';
 }
 add_action( 'wp_enqueue_scripts', 'buziness_scripts' );
 
@@ -257,6 +226,15 @@ function bz_fallback_scritps_conditionals($tag, $handle, $src ){
 	return $output;
 }
 add_filter('script_loader_tag', 'bz_fallback_scritps_conditionals', 11 ,3);
+
+/**
+ * Registers an editor stylesheet for the theme.
+ */
+function buziness_add_editor_styles() {
+    add_editor_style( 'custom-editor-style.css' );
+}
+add_action( 'admin_init', 'buziness_add_editor_styles' );
+
 
 /**
  * Implement the Custom Helper Functions feature.
@@ -294,6 +272,13 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Load  custom meta-box file .
  */
 require get_template_directory() . '/inc/custom-meta-box.php';
+
+
+/**
+ * Load Custom Theme Color Scheme
+ */
+require get_template_directory() . '/inc/color-scheme.php';
+new Buziness_Color_Scheme;
 
 
 /** Google iframe Sanitization */

@@ -1,0 +1,184 @@
+.main-navigation #primary-menu.menu li.current_page_item, 
+.main-navigation #primary-menu.menu li.current-menu-ancestor,
+.main-navigation #primary-menu.menu li:hover,
+.entry-content a:hover{
+	border-color: #f7c651;
+}
+
+/*#f7c651*/
+.main-navigation #primary-menu.menu li ul li.current-menu-item,
+.main-navigation ul ul li:hover > a, 
+.main-navigation ul ul li.focus > a,
+.main-navigation ul ul a:hover,
+.main-navigation ul ul li.current_page_item > a,
+#nav-icon span,
+input[type="submit"],
+.counter-area .title h2:after,
+.entry-content a:hover,
+.entry-footer a,
+.nav-links a ,
+.footer-area-bottom, 
+h2.widget-title:after,
+.section.cta,
+.title h2:after,
+#scrollUp {
+	background-color: #f7c651;
+}
+
+.main-navigation li:hover > a,
+.main-navigation li.focus > a,
+li:hover.menu-item-has-children:after,
+.main-navigation li.current_page_ancestor a, 
+.main-navigation .current_menu_ancestor a ,
+a:hover,
+input[type="submit"]:hover,
+.footer-area-top .contact-name,
+.footer-area-top .widget-resources a,
+.footer-area-top .contacts li i,
+.blog-block:hover .blog-desc h4 a,
+.widget ul li a:hover  {
+	color: #f7c651; 
+}
+.main-navigation .menu-cta-button a{
+
+	background-color:  #f7c651;
+}
+.main-navigation .menu-cta-button a:hover,
+.blog-desc h4 a:hover {
+	color: #f7c651 !important;
+}
+
+.main-navigation ul ul a,
+.widget_search .search-form input[type="search"],
+.main-navigation ul ul a:hover ,
+.main-navigation li.current_page_ancestor ul a,
+.main-navigation ul ul li.current_page_item > a ,
+.counter-area .title h2,
+.breadcrumb-title,
+.counter-number, .counter-prefix, 
+.counter-description,
+.cta-block h2, .cta-block p,
+.dtl a ,
+.footer-area-top .footer-box,
+.footer-area-bottom,
+#scrollUP{
+	color: #fff;
+}
+
+.dtl a {
+	border-color: #fff;
+}
+
+.blog-desc h4 a:hover{
+	background-color:#fff;
+}
+
+.main-banner,
+.widget_search .search-form input[type="search"]{
+	background: #fff;
+}
+
+.widget_search .search-form input[type="search"] {
+
+	border-color:  #eee;
+} 
+
+.main-navigation .menu-cta-button a:hover,
+#drop::before,#drop::after,
+input[type="submit"]:hover,
+.cta .dtl a:hover,
+#scrollUp:hover {
+	background-color: #000;
+}
+
+.main-navigation ul ul li:hover > a,
+.main-navigation ul ul li.focus > a,
+.entry-footer a ,
+.nav-links a ,
+.entry-content a:hover,
+.footer-area-bottom .site-info a{
+	color: #000;
+}
+
+
+.main-navigation a,
+.entry-content a,
+a ,
+.title h2 ,
+h2.widget-title {
+	color: #555; 
+}
+
+.entry-content a{
+	border-color: #555;
+}
+
+.offer .description p {
+	color: #777;
+}
+
+.title p {
+	color: #777;
+}
+
+.widget ul li a {
+	color: #777;
+}
+
+.nav-menu li li.menu-item-has-children > a:after {
+ color: #222;
+ }
+
+.search-form span i:hover { 
+	color: #3498db;
+}
+
+.widget_search .search-form input[placeholder] {
+	color: #666;
+}
+
+.widget ul li {
+	border-bottom-color: #ccc;
+}
+.footer-area-top{
+	background-color: #000;
+}
+.main-navigation .menu-cta-button:hover > a{
+	color: inherit;
+}
+header.site-header {
+	background-color: #fff;
+}
+
+.entry-title a {
+    color: #373b44;
+}
+.entry-title a:hover {
+    color: #73c8a9;
+}
+
+@media screen and (max-width: 990px){
+
+
+	ul.submenu li.menu-item:hover,
+	ul li.menu-item:hover{
+		background: #f7c651;
+	}
+
+	ul.submenu li.menu-item:hover > a, ul li.menu-item:hover > a{
+		color: #000;
+	}
+
+	ul li.menu-item, .bz-menuwrapper ul li { 
+		border-top-color:  #444; 
+	}
+
+	.bz-menuwrapper ul, ul.bz-menu{
+		background: #000;
+	}
+
+	.bz-menuwrapper ul li a, li.menu-item a {
+		color: #fff;
+	}
+
+}

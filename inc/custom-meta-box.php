@@ -289,16 +289,16 @@ function buziness_post_image_icon($post){
         $content .= '<input type="hidden" id="upload_icon_image" name="_post_icon_image" value="" />';
     }
 
+    // Add Color Picker
     $content .= '<table class="form-table">';
-    $content .= '<tr> <td><label for="buziness_offer_icon_color" class="buziness_icon_color_label"><strong>'. __( 'Icon color', 'buziness' ). '</strong></label></td>
-                    <td> <input name="buziness_offer_icon_color" id="buziness_offer_icon_color" type="text" value="';
-    
-    if ( isset ( $color_id ) ) 
-        $content .= esc_attr__($color_id);
-    
-    $content .= '" class="buziness_offer_icon_color" /> <p class="description">'. __("Select Front Page icon colors","buziness"). '</p></td> </tr>';
+    $content .= '<tr> 
+                    <td><label for="buziness_offer_icon_color" class="buziness_icon_color_label"><strong>'. __( 'Icon color', 'buziness' ). '</strong></label></td>
+                    <td> <input name="buziness_offer_icon_color" id="buziness_offer_icon_color" type="text" value="'.( isset ( $color_id )? $color_id : '').'"';
+    $content .= 'class="buziness_offer_icon_color" /> <p class="description">'. __("Select Front Page icon colors","buziness"). '</p></td> </tr>';
     $content .= '</table>';
-    do_action('buziness_hide_meta_for_categories',array("Services","Setup"), 'offerposticondiv');
+
+    do_action('buziness_hide_meta_for_categories', array("Services","Setup"), 'offerposticondiv');
+    
     echo $content;
 }
 

@@ -6,40 +6,33 @@ jQuery(document).ready(function($) {
         $(".menu-toggle").click(function(){
             $(".navigation #bz-menu ul").slideToggle("fast");
             $(this).children('#nav-icon').toggleClass('open');
+             $('.navigation #bz-menu ul ul').css('display','none');
         });
     });
 
     //Submenu Dropdown Toggle
     if($('li.menu-item-has-children ul').length){
-        // $('li.menu-item-has-children').append('<div class="cl_drop_menu"><i class="fa fa-angle-down"></i></div>');
         $('li.menu-item-has-children').append('<div class="cl_drop_menu"><i id="drop"></i></div>');
 
         //Dropdown Button
         $('.cl_drop_menu').on('click', function() {
             $(this).children("#drop").toggleClass('collapse');
             $(this).prev('ul').slideToggle(500);
-            // if($(this).children('.fa').hasClass('fa-angle-down'))
-            // {
-            //     $(this).children('.fa').removeClass('fa-angle-down');
-            //     $(this).children('.fa').addClass('fa-angle-up');
-            // }
-            // else{
-            //     $(this).children('.fa').removeClass('fa-angle-up');
-            //     $(this).children('.fa').addClass('fa-angle-down');
-            // }
-            
         });
+       
     }
+
+
 
     if($('.site-header').length){ 
         var stickyNavTop = $('.site-header').offset().top;
         var stickyNav = function(){
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > stickyNavTop) {
-                 $('.site-header').addClass('sticky');
-                  } else {
-                      $('.site-header').removeClass('sticky');
-                  }
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > stickyNavTop) {
+                     $('.site-header').addClass('sticky');
+                } else {
+                    $('.site-header').removeClass('sticky');
+                }
             };
         stickyNav(); 
         $(window).scroll(function() {
@@ -55,7 +48,25 @@ jQuery(document).ready(function($) {
     //     $('.site-header').removeClass("sticky");   
     // }});
    
+    $(window).scroll(function(){
+        if($(this).scrollTop() > 1){
+            $('#scrollUp').addClass("show");
+        }else {
+            $('#scrollUp').removeClass("show");
+        }
+    });
 
+    $('.scrollUp').on('click', function(){
+        console.log("Clicked");
+        $("html, body").animate({scrollTop: 0}, 600);
+        // return false;
+    });
+
+    $simcal = $('.footer-area-top').find('div.simcal-calendar');
+    if($simcal.length){
+        $simcal.removeClass('simcal-default-calendar-light');
+        $simcal.addClass('simcal-default-calendar-dark');
+    }
     //wow
     wow = new WOW({
         animateClass: 'animated',

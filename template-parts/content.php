@@ -7,10 +7,13 @@
  * @package Buziness
  */
 
+$post_feature_image = get_theme_mod('buziness_activate_post_featured_image', 1);
+
+$layout_class = buziness_sidebar_layout_class();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<header class="entry-header wow fadeInDown">
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -26,8 +29,18 @@
 		endif; ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php
+	<div class="entry-content wow fadeInUp">
+		<?php if( $post_feature_image == 1 ) : 
+					?>
+
+			<div class="entry-content-img"> 
+						
+				<?php the_post_thumbnail(); ?>
+					<?php //endif; ?>
+			</div>
+		<?php endif; ?>
+		<?php 
+		if( is_single() ) {
 			the_content( sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
@@ -40,7 +53,19 @@
 				),
 				get_the_title()
 			) );
-
+		}else {
+			?>
+                       <p>
+                       <?php
+					 buziness_add_excerpt_length( apply_filters( 'buziness_service_excerpt_length', 100 ) );
+                        the_excerpt();
+                    buziness_remove_excerpt_length();
+                                                  ?> 
+                        </p> 
+							
+						<a href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read More', 'buziness' ); ?></a> 
+                                                    <?php 
+		}
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'buziness' ),
 				'after'  => '</div>',

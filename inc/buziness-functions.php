@@ -26,7 +26,43 @@ function buziness_counter_row_html($counter)
 	?> </div> <?php
 }
 
-add_action('buziness_counter_row', 'buziness_counter_row_html', 10, 1);
+// add_action('buziness_counter_row', 'buziness_counter_row_html', 10, 1);
+
+function buziness_counter_values($counter){
+
+    $lines = explode("\n", $counter);
+    $lines = array_values(array_filter($lines, "trim"));
+    $num_counters = count($lines);
+
+    for ($i=0; $i < (($num_counters <= 8) ? $num_counters : 8); $i++) { 
+        $line = trim( $lines[$i] );
+
+        if(empty($line))
+            continue;
+
+        list($desc, $number) = explode('|', $line);
+        echo '<div id="buziness_counter" class="counter '.( ($num_counters/2 <= 3) ? "col-3" : "col-4" ). '">';
+        echo '  <span class="counter-number">'. $number .'</span>';
+        echo '  <span class="counter-description">'. $desc .'</span>';
+        echo '</div>';
+    }
+    // foreach ($lines as $line) {
+    //     $line = trim( $line );
+    //     $values = explode('|', $line);
+    //     echo '<div id="buziness_counter" class="counter '.( ($num_counters/2 <= 3) ? "col-3" : "col-4" ). '">';
+    //     echo '  <span class="counter-number">'.$values[1] .'</span>';
+    //     echo '  <span class="counter-description">'. $values[0] .'</span>';
+    //     echo '</div>';
+    // }
+
+}
+add_action('buziness_counter', 'buziness_counter_values', 10, 1);
+
+
+function buziness_nl_sanitize_textarea($input){
+    $input[] = "\n";
+    return $input;
+}
 
 function buziness_banner()
 {
