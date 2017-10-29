@@ -41,8 +41,15 @@ function buziness_counter_values($counter){
             continue;
 
         list($desc, $number) = explode('|', $line);
+        $re = '/^(\D*)\s*([\d,\.]+)\s*(\D*)$/';
+        preg_match($re, $number, $matches, PREG_OFFSET_CAPTURE, 0);
+        // echo $matches[1][0];
+        // print_r($matches);
         echo '<div id="buziness_counter" class="counter '.( ($num_counters/2 <= 3) ? "col-3" : "col-4" ). '">';
-        echo '  <span class="counter-number">'. $number .'</span>';
+        echo ' <span style="display: inline-block;">';
+        echo '  <span class="counter-prefix">'. $matches[1][0] . '</span>';
+        echo '  <span class="counter-number">'. $matches[2][0] .'</span>';
+        echo '  </span>';
         echo '  <span class="counter-description">'. $desc .'</span>';
         echo '</div>';
     }

@@ -66,7 +66,28 @@ jQuery(document).ready(function($) {
     if($simcal.length){
         $simcal.removeClass('simcal-default-calendar-light');
         $simcal.addClass('simcal-default-calendar-dark');
+        $('span.simcal-events-dots b').css('color', "#fff");
     }
+
+    //Banner Slider
+
+ 
+ $(".owl-carousel").owlCarousel({ 
+    items:1, 
+    loop:true,
+    nav:true,
+    dots:true, 
+    animateOut: 'slideOutDown',
+    animateIn: 'flipInX',
+    autoplay:false,
+    autoplayTimeout:4000,
+    autoplayHoverPause:false,
+    smartSpeed:450,
+    navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"], 
+    
+}); 
+// Testimonial Slider
+
     //wow
     wow = new WOW({
         animateClass: 'animated',

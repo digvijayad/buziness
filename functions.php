@@ -169,10 +169,14 @@ function buziness_scripts() {
 	wp_enqueue_style( 'buziness-colors', get_template_directory_uri() . '/css/colors.css' );
 	// wp_enqueue_style( 'buziness-colors',get_template_directory_uri() . '/css/colors.css'  );
 
+
 	wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 	wp_enqueue_style('animate', get_template_directory_uri() . '/css/animate.css');
+	wp_enqueue_style('owl-carousel', get_template_directory_uri().'/css/owl.carousel.css');   
+	wp_enqueue_style('owl-theme-default', get_template_directory_uri().'/css/owl.theme.default.css');
+	
 
-	wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Assistant');
+	wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Assistant|Bree+Serif|Calligraffitti');
 
 	wp_enqueue_script( 'buziness-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -181,6 +185,8 @@ function buziness_scripts() {
 	// I'm using a custom handle here because both resources are coming in one request
 	wp_enqueue_script('jsdelivr-scripts', 'https://cdn.jsdelivr.net/g/jquery.waypoints@2.0.5,jquery.counterup@1.0', array('jquery'), null, true );
 	// wp_enqueue_script('wow-scripts', 'https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js', array('jquery'), null, true );
+	// 
+	wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/js/owl.carausel.js', array(), '2.0.0', true );
 	wp_enqueue_script('wow', get_template_directory_uri() . '/js/wow.js', array(), '1.0.0' , true);
 	wp_enqueue_script( 'buziness-main-js', get_template_directory_uri() . '/js/buziness.js', array('jquery'), '20151215', true );
 

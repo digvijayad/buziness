@@ -21,8 +21,14 @@ input[type="submit"],
 h2.widget-title:after,
 .section.cta,
 .title h2:after,
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span,
+.main-navigation .menu-cta-button a,
 #scrollUp {
 	background-color: #f7c651;
+}
+.owl-theme .owl-nav [class*='owl-']:hover{
+
+	background-color:  #f7c651 !important;
 }
 
 .main-navigation li:hover > a,
@@ -36,12 +42,10 @@ input[type="submit"]:hover,
 .footer-area-top .widget-resources a,
 .footer-area-top .contacts li i,
 .blog-block:hover .blog-desc h4 a,
-.widget ul li a:hover  {
+.widget ul li a:hover,
+.cta .dtl a:hover,
+.entry-meta span a:hover {
 	color: #f7c651; 
-}
-.main-navigation .menu-cta-button a{
-
-	background-color:  #f7c651;
 }
 .main-navigation .menu-cta-button a:hover,
 .blog-desc h4 a:hover {
@@ -57,10 +61,8 @@ input[type="submit"]:hover,
 .breadcrumb-title,
 .counter-number, .counter-prefix, 
 .counter-description,
-.cta-block h2, .cta-block p,
-.dtl a ,
 .footer-area-top .footer-box,
-.footer-area-bottom,
+.footer-area-top .widget-title,
 #scrollUP{
 	color: #fff;
 }
@@ -96,6 +98,10 @@ input[type="submit"]:hover,
 .entry-footer a ,
 .nav-links a ,
 .entry-content a:hover,
+.cta-block h1, .cta-block p,
+.dtl a ,
+.footer-area-bottom,
+.owl-theme .owl-nav [class*='owl-']:hover,
 .footer-area-bottom .site-info a{
 	color: #000;
 }
@@ -108,7 +114,9 @@ a ,
 h2.widget-title {
 	color: #555; 
 }
-
+.owl-theme .owl-dots .owl-dot span {
+    background: #555;
+}
 .entry-content a{
 	border-color: #555;
 }

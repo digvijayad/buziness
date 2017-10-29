@@ -129,6 +129,7 @@ else:
 
 
 $slider_shortcode = get_theme_mod('buziness_slider_shortcode');
+// echo do_action('buziness_main_banner');
 
 if(!empty($slider_shortcode)){ 
 	echo do_shortcode($slider_shortcode);
@@ -168,6 +169,49 @@ if(!empty($slider_shortcode)){
 	<?php endif; ?>
 	<?php endwhile; ?>
 
+<!-- CTA-start -->
+
+	<?php $CTA_active = absint(get_theme_mod('buziness_call_to_action_activate',1));
+		$CTA_title = get_theme_mod( 'buziness_call_to_action_title', __( 'Title' , 'buziness') );
+		$CTA_descriptpon = get_option( 'buziness_call_to_action_desc', __( 'CTA title', 'buziness') );
+		$CTA_bg_color = get_theme_mod('buziness_call_to_action_bgcolor');
+	?>
+	
+	<?php if($CTA_active == 1): ?>
+		<section class="section cta" style="background-color: <?php /*echo $CTA_bg_color;*/ ?>">
+			<div class="wrapper">
+				<div class="cta-block wow zoomIn"> 
+<!-- 					<h2>We are here to help your business grow!</h2>
+					<h2>Do you have an amazing business idea?</h2>
+					<p>But don't know how to proceed with it?</p>  
+					<p>Join Us Today and get a free counseling session!</p> 
+
+					<h2>Do you want to start a new Business?</h2>
+					<p>Develop your idea into a full fledged busniss with us.</p>  
+					<p>Join Us Today and get a free counseling session!</p>  -->
+
+					<!-- <h2>Think of an Idea? we provide you with tools to succeed!</h2> -->			
+					<!-- <h2>You have a Vision. We have the tools you need.</h2> -->
+					<!-- <p>Our team will help you on every cycle of your Business' life.</	p> -->
+				<?php 
+					if(!empty( $CTA_title ))
+					{
+				?>
+					<h2><?php echo esc_html($CTA_title); ?></h2>
+
+				<?php  }
+					if( !empty( $CTA_descriptpon ) ) {
+					?>
+					<p><?php echo esc_html($CTA_descriptpon); ?></p>
+				<?php } ?>
+				</div>
+					<div class="dtl wow zoomIn">
+						<a href="#">Get Started</a>
+					</div>
+				<div class="clearfix"></div>
+			</div>
+		</section>
+	<?php endif; ?>
 <!-- offer -->
 <?php 
 	$services_active = absint(get_theme_mod('buziness_services_setting_activate',1));
@@ -261,6 +305,9 @@ if(!empty($slider_shortcode)){
 	<?php
 		$Counter_active = absint(get_theme_mod('buziness_counter_activate',1));
 		$Counter_title = get_theme_mod( 'buziness_counter_title', __( 'Title' , 'buziness') );
+		// $Counter_1 = buziness_counter_json_content(get_theme_mod('buziness_counter_1'));
+		// $Counter_2_active = absint(get_theme_mod('buziness_counter_row_2_activate',1));
+		// $Counter_2 = buziness_counter_json_content(get_theme_mod('buziness_counter_2'));
 		$Counter_1 = get_theme_mod('buziness_counter_1');
 		$Counter_background = get_theme_mod('buziness_counter_background_image');
 	?> 
@@ -290,155 +337,20 @@ if(!empty($slider_shortcode)){
 	<?php endif;?>
 <!-- Counter End -->
 
-<!-- CTA-start -->
 
-	<?php $CTA_active = absint(get_theme_mod('buziness_call_to_action_activate',1));
-		$CTA_title = get_theme_mod( 'buziness_call_to_action_title', __( 'Title' , 'buziness') );
-		$CTA_descriptpon = get_option( 'buziness_call_to_action_desc', __( 'CTA title', 'buziness') );
-		$CTA_bg_color = get_theme_mod('buziness_call_to_action_bgcolor');
-	?>
-	
-	<?php if($CTA_active == 1): ?>
-		<section class="section cta" style="background-color: <?php /*echo $CTA_bg_color;*/ ?>">
-			<div class="wrapper">
-				<div class="cta-block wow zoomIn"> 
-				<?php 
-					if(!empty( $CTA_title ))
-					{
-				?>
-					<h1><?php echo esc_html($CTA_title); ?></h1>
-
-				<?php  }
-					if( !empty( $CTA_descriptpon ) ) {
-					?>
-					<p><?php echo esc_html($CTA_descriptpon); ?></p>
-				<?php } ?>
-				</div>
-					<div class="dtl wow zoomIn">
-						<a href="#">Get Started</a>
-					</div>
-				<div class="clearfix"></div>
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<!-- CTA End -->
-<!-- Testimonials -->
-	<?php 
-	$testimonial_active = absint(get_theme_mod( 'buziness_testimonials_setting_activate'),1);
-	if ($testimonial_active == 1 ) {
-		
-		$testimonial_shortcode = get_theme_mod('buziness_testimonial_shortcode');
-
-		if(!empty($testimonial_shortcode)){ 
-			echo do_shortcode($testimonial_shortcode);
-		}
-		else {
-			$testimonial_title = get_theme_mod( 'buziness_testimonials_title', __( 'Testimonials' , 'buziness') );
-			$testimonial_category = get_theme_mod( 'buziness_testimonails_dropdown_categories' );
-			$testimonials_background = get_theme_mod('buziness_testimonials_background_image');
-			$testimonial_type = get_theme_mod('buziness_testimonails_dropdown_types', 2);
-
-
-			if(!empty( $testimonial_category)) : 
-			$args = array(
-				'post_type' => 'post',
-				'post_status' => 'publish',
-				'cat' => absint($testimonial_category)
-			);
-
-			$query = new WP_Query($args);
-
-
-						?>
-			<section class="testimonials" >
-				
-				<?php if ($testimonial_type == 2) :  ?>
-					<div class="parallax-image" <?php echo (!empty($testimonials_background)) ? 'style="background-image: url('. esc_url($testimonials_background) .');"': ''; ?> >
-<!-- 
-					 style="background: url(http://demo.codetrendy.com/codepress-corporate-lite/wp-content/uploads/2016/09/architecture-blue-building-business-41170-large.jpeg);"> -->
-						<div class="bg-black"></div>
-					</div>
-				<?php endif; ?>
-
-				<!-- <div class="wrapper"> -->
-
-					<?php if(!empty($testimonial_title)) : ?>
-						<div class="title wow fadeInDown"  >
-							<h2 <?php if ($testimonial_type == 2) {	echo 'style="color: #fff";'; } ?>><?php echo esc_html($testimonial_title); ?></h2> 
-						</div> 
-					<?php endif; ?>			
-
-						<div class="testimonial">
-							<div id="testimonial-slider" class="owl-carousel owl-theme">
-
-								<?php  
-								 while( $query-> have_posts() ) : $query->the_post(); 
-								?> 						 
-									
-									<div class="item client wow zoomIn <?php if ($testimonial_type == 1) :	echo 'grid-2-columns'; ?> " 
-										<?php 
-									else:
-										echo '" style="color: #fff";';
-									endif;	?>
-									>
-										<!-- Testimonial Type 1  -->
-										<?php if ($testimonial_type == 1) :  ?>
-
-											<div class="grid-1">
-											
-												<?php
-												$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'buziness_about_us_image_size');
-												 if(!empty($image_url[0])){ ?>
-														<img src="<?php echo esc_url($image_url[0]); ?>" alt="<?php the_title_attribute(); ?> ">
-		                                        <?php } ?>
-											</div>
-											<div class="grid-2" style="align-self: center;">
-												<div class="content"> 
-													<p><?php the_content(); ?></p>
-												</div>
-													<h4 class="client-name"><?php the_title(); ?></h4>
-													<h4 class="client-company"><?php  echo esc_attr(get_post_meta(get_the_ID(), '_excerpt', true )); ?></h4>
-											</div>
-
-										<?php else: ?>
-											<!--Testimonial Type 2 -->
-											<p><?php the_content(); ?></p>
-
-												<?php if ( has_post_thumbnail()) :
-							                     $image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'buziness_about_us_image_size'); ?>
-
-													<div class="client-img">
-		                                            <?php if(!empty($image_url[0])){ ?>
-														<img src="<?php echo esc_url($image_url[0]); ?>" alt="<?php the_title_attribute(); ?> ">
-		                                                <?php } ?>
-													</div>
-
-												<?php endif; ?>
-
-											<h4 class="client-name"><?php the_title(); ?></h4>
-											<h4 class="client-company"><?php echo esc_attr(get_post_meta(get_the_ID(), '_excerpt', true )); ?></h4>
-
-										<?php endif; ?>
-									</div> 	
-				
-
-								<?php endwhile; 
-									wp_reset_postdata();
-								?>
-
-							</div>	
-						</div>
-				<!-- </div>	 -->
-			</section>
-
-			<?php endif;  //testimonial Category  
-
-		} // if not shortcodde
-
-	} ?> <!-- not active -->
 <!-- Cta End -->
-	
+	<?php 
+
+	$testimonial_shortcode = get_theme_mod('buziness_testimonial_shortcode');
+
+
+if(!empty($testimonial_shortcode)){ 
+	echo do_shortcode($testimonial_shortcode);
+}
+
+?> 
+	<!-- </div> main content section -->
+ 	
 	
 <?php
 endif;

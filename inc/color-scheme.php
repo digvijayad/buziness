@@ -33,9 +33,9 @@ class Buziness_Color_Scheme {
 		) );
 
 		$options = array(
-	    	'link_color' => __( 'Link color', 'buziness' ),
-		    'button_background_color' => __( 'Button background color', 'buziness' ),
-		    'button_hover_background_color' => __( 'Button hover background color', 'buziness' ),
+	    	'link_color' => __( 'Primary color', 'buziness' ),
+		    'button_background_color' => __( 'Secondary color', 'buziness' ),
+		    'button_hover_background_color' => __( 'Third color', 'buziness' ),
 		);
 
 		foreach ( $options as $key => $label ) {
@@ -83,9 +83,17 @@ class Buziness_Color_Scheme {
 		h2.widget-title:after,
 		.section.cta,
 		.title h2:after,
+		.main-navigation .menu-cta-button a,
+		.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span,
 		#scrollUp {
 			background-color: %1$s;
 		}
+
+		.owl-theme .owl-nav [class*="owl-"]:hover{
+
+			background-color:  %1$s !important;
+		}
+
 
 		.main-navigation li:hover > a,
 		.main-navigation li.focus > a,
@@ -98,12 +106,9 @@ class Buziness_Color_Scheme {
 		.footer-area-top .widget-resources a,
 		.footer-area-top .contacts li i,
 		.blog-block:hover .blog-desc h4 a,
-		.widget ul li a:hover  {
+		.widget ul li a:hover,
+		.entry-meta span a:hover  {
 			color: %1$s; 
-		}
-		.main-navigation .menu-cta-button a{
-
-			background-color:  %1$s;
 		}
 		.main-navigation .menu-cta-button a:hover,
 		.blog-desc h4 a:hover {
@@ -120,10 +125,10 @@ class Buziness_Color_Scheme {
 		.breadcrumb-title,
 		.counter-number, .counter-prefix, 
 		.counter-description,
-		.cta-block h2, .cta-block p,
+		.cta-block h1, .cta-block p,
 		.dtl a ,
 		.footer-area-top .footer-box,
-		.footer-area-bottom,
+		.footer-area-top .widget-title,
 		#scrollUp{
 			color: %2$s;
 		}
@@ -158,6 +163,7 @@ class Buziness_Color_Scheme {
 		.entry-footer a ,
 		.nav-links a ,
 		.entry-content a:hover,
+		.footer-area-bottom,
 		.footer-area-bottom a {
 			color: %3$s;
 		}

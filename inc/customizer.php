@@ -13,8 +13,9 @@
 function buziness_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->remove_setting( 'header_textcolor' );
-	// $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+	// $wp_customize->remove_setting( 'header_textcolor' );
+	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
@@ -25,6 +26,7 @@ function buziness_customize_register( $wp_customize ) {
 			'selector'        => '.site-description',
 			'render_callback' => 'buziness_customize_partial_blogdescription',
 		) );
+
 
 	}
 
@@ -452,11 +454,32 @@ $wp_customize->add_control( 'buziness_single_post_layout', array(
 			'settings' => 'buziness_slider_shortcode'
 		));
 
+/***********************************************************************************************************/
+  //Testimonials
+/*********************************************************************************************************/
+
 	$wp_customize->add_section('buziness_testimonials_section', array(
 		'title' 		=> esc_html__('Testimonial Settings', 'buziness'),
 		'panel'			=> 'buziness_custom_frontpage_panel',
 		'priority'		=> 1,
 	));
+
+	$wp_customize->add_setting('buziness_testimonials_setting_activate', array(
+		'default'           => 1,
+		'priority'			=> '',
+		'capability'        => 'edit_theme_options',
+		'sanitize_callback' => 'buziness_checkbox_sanitize',
+		
+		));
+
+	$wp_customize->add_control('buziness_testimonials_setting_activate', array(
+		'type'      => 'checkbox',
+		'label'     => esc_html__('Check To Activate testimonials', 'buziness'),
+		'section'   => 'buziness_testimonials_section',
+		'settings'  => 'buziness_testimonials_setting_activate'
+		));
+
+
 	$wp_customize->add_setting('buziness_testimonial_shortcode',array(
 
 		'default' => esc_html__('', 'buziness'),
@@ -469,11 +492,120 @@ $wp_customize->add_control( 'buziness_single_post_layout', array(
 		array(
 			'type' => 'text',
 			'label' => esc_html__('Testimonial Shortcode','buziness'),
-			'description' => esc_html__('Enter the shortcode for testimonials', 'buziness'),
+			'description' => esc_html__('If you want to use a plugin for testimonails then enter the shortcode for the plugin, otherwise leave this field empty and select the category for testimonails', 'buziness'),
 			'section' => 'buziness_testimonials_section',
 			'settings' => 'buziness_testimonial_shortcode'
 		));
-	$wp_customize->remove_section('header_image');
+
+	$wp_customize->add_setting('buziness_testimonials_title',array(
+		'default' => esc_html__('Title', 'buziness'),
+		'capability' => 'edit_theme_options',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('buziness_testimonials_title',
+		array(
+			'type' => 'text',
+			'label' => esc_html__('Testimonial title','buziness'),
+			'description' => esc_html__('Type title for testimonails', 'buziness'),
+			'section' => 'buziness_testimonials_section',
+			'settings' => 'buziness_testimonials_title'
+		));
+
+
+	$wp_customize->add_setting('buziness_testimonails_dropdown_categories',array(
+		// 'default' => esc_html__('Description', 'buziness'),
+
+		'capability' => 'edit_theme_options',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('buziness_testimonails_dropdown_categories',
+		array(
+			'type' => 'select',
+			'choices'=> $buziness_options_categories,
+			// 'priority'=> 20,
+			'label' => esc_html__('Categories','buziness'),
+			'description' => esc_html__('Select category for testimonails', 'buziness'),
+			'section' => 'buziness_testimonials_section',
+			'settings' => 'buziness_testimonails_dropdown_categories'
+		));	
+
+	$testimonail_types = array(
+		'1' => 1,
+		'2' => 2
+	);
+	$wp_customize->add_setting('buziness_testimonails_dropdown_types',array(
+		// 'default' => esc_html__('Description', 'buziness'),
+
+		'capability' => 'edit_theme_options',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('buziness_testimonails_dropdown_types',
+		array(
+			'type' => 'select',
+			'choices'=> $testimonail_types,
+			// 'priority'=> 20,
+			'label' => esc_html__('Types','buziness'),
+			'description' => esc_html__('Choose testimonial Type', 'buziness'),
+			'section' => 'buziness_testimonials_section',
+			'settings' => 'buziness_testimonails_dropdown_types'
+		));
+
+	$wp_customize -> add_setting( 'buziness_testimonials_background_image', 
+         array(
+            'default' => '',
+            'capability' => 'edit_theme_options',
+            'transport' => 'refresh',
+            'sanitize_callback' => 'esc_url_raw'
+         ) );
+    $wp_customize -> add_control( new WP_Customize_Image_Control( $wp_customize, 'buziness_testimonials_background_image' ,
+         array(
+           'type' => 'image',
+           'label' => esc_html__( 'Background Image' , 'buziness'),
+           'description' => esc_html__('Upload image for background', 'buziness'),
+           'section' => 'buziness_testimonials_section',
+           'setting' => 'buziness_testimonials_background_image'
+          )));
+
+/**
+	 * Custom colors.
+	 */
+	// $wp_customize->add_setting( 'colorscheme', array(
+	// 	'default'           => 'light',
+	// 	'transport'         => 'postMessage',
+	// 	'sanitize_callback' => 'sanitize_hex_color',
+	// ) );
+
+	// $wp_customize->add_setting( 'colorscheme_hue', array(
+	// 	'default'           => 250,
+	// 	'transport'         => 'postMessage',
+	// 	'sanitize_callback' => 'absint', // The hue is stored as a positive integer.
+	// ) );
+
+	// $wp_customize->add_control( 'colorscheme', array(
+	// 	'type'    => 'radio',
+	// 	'label'    => __( 'Color Scheme', 'buziness' ),
+	// 	'choices'  => array(
+	// 		'light'  => __( 'Light', 'buziness' ),
+	// 		'dark'   => __( 'Dark', 'buziness' ),
+	// 		'custom' => __( 'Custom', 'buziness' ),
+	// 	),
+	// 	'section'  => 'colors',
+	// 	'priority' => 5,
+	// ) );
+
+	// $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'colorscheme_hue', array(
+	// 	'mode' => 'hue',
+	// 	'section'  => 'colors',
+	// 	'priority' => 6,
+	// ) ) );
+
+	// $wp_customize->remove_section('header_image');
     // sanitization works
 		require get_template_directory() . '/inc/customizer-helper.php';
 
@@ -505,3 +637,11 @@ function buziness_customize_preview_js() {
 	wp_enqueue_script( 'buziness-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'buziness_customize_preview_js' );
+
+/**
+ * Load dynamic logic for the customizer controls area.
+ */
+function buziness_panels_js() {
+	wp_enqueue_script( 'buziness-customize-controls', get_template_directory_uri() . '/js/customize-controls.js', array('customize-controls'), '1.0', true );
+}
+add_action( 'customize_controls_enqueue_scripts', 'buziness_panels_js' );

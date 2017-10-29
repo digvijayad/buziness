@@ -30,7 +30,7 @@ $layout_class = buziness_sidebar_layout_class();
 			<div class="wrapper">
 				<div class="breadcrumb-menu">
 					<div class="breadcrumb-title">
-						<h2><?php the_title(); ?></h2>
+						<h2 ><?php echo esc_html(get_bloginfo( 'site-title' )); ?></h2>
 					</div>
 				</div>
 			</div> 
