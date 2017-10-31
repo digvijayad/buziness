@@ -176,3 +176,17 @@
          return '';
       }
    }
+
+   //radio box sanitization function
+      function buziness_sanitize_radio( $input, $setting ){
+       
+          //input must be a slug: lowercase alphanumeric characters, dashes and underscores are allowed only
+          $input = sanitize_key($input);
+
+          //get the list of possible radio box options 
+          $choices = $setting->manager->get_control( $setting->id )->choices;
+                           
+          //return input if valid or return default option
+          return ( array_key_exists( $input, $choices ) ? $input : $setting->default );                
+           
+      }

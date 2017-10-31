@@ -23,6 +23,7 @@ h2.widget-title:after,
 .title h2:after,
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span,
 .main-navigation .menu-cta-button a,
+.footer-area-top ul#menu-social-menu li:hover i,
 #scrollUp {
 	background-color: #f7c651;
 }
@@ -44,6 +45,7 @@ input[type="submit"]:hover,
 .blog-block:hover .blog-desc h4 a,
 .widget ul li a:hover,
 .cta .dtl a:hover,
+.footer-area-top ul#menu-social-menu li i,
 .entry-meta span a:hover {
 	color: #f7c651; 
 }
@@ -71,7 +73,8 @@ input[type="submit"]:hover,
 	border-color: #fff;
 }
 
-.blog-desc h4 a:hover{
+.blog-desc h4 a:hover,
+{
 	background-color:#fff;
 }
 
@@ -102,6 +105,7 @@ input[type="submit"]:hover,
 .dtl a ,
 .footer-area-bottom,
 .owl-theme .owl-nav [class*='owl-']:hover,
+.footer-area-top ul#menu-social-menu li:hover i,
 .footer-area-bottom .site-info a{
 	color: #000;
 }

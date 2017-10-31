@@ -13,29 +13,21 @@
  */
 
 $page_banner_image = get_theme_mod('buziness_page_banner_image');
+// var_dump((get_template_directory_uri() . '/images/banner.jpg'));
+$attachment_id = attachment_url_to_postid($page_banner_image);
+
+$image_array = wp_get_attachment_image_src($attachment_id, 'buziness_banner_image_size');
 
 get_header(); 
 
-if(!empty($page_banner_image)){
-	$banner_image = $page_banner_image;
-}
-else {
-	$banner_image = "http://localhost/sbdc/wp-content/uploads/2017/10/banner.jpg";
-}
-
-$attachment_id = attachment_url_to_postid($banner_image);
-$image_array = wp_get_attachment_image_src($attachment_id, 'buziness_banner_image_size');
-
 $layout_class = buziness_sidebar_layout_class();
-
-
 
 ?>
 
 	<?php if( !( is_home() ) ) { ?>
 		<!-- Breadcrumb-start -->
 		
-		<section class="breadcrumb" <?php echo (!empty($image_array[0])) ? 'style="background: url(' . esc_url($image_array[0]) .');': ''; ?>">
+		<section class="breadcrumb" style="background: url( <?php echo (!empty($image_array[0])) ? esc_url($image_array[0]) .');': (get_template_directory_uri() . '/images/banner.jpg') . ');"' ?>">
 <!-- <section class="breadcrumb" style="background: url( 'http://localhost/sbdc/wp-content/uploads/2017/10/banner.jpg' );"> -->
 			<div class="wrapper">
 				<div class="breadcrumb-menu">

@@ -85,6 +85,7 @@ class Buziness_Color_Scheme {
 		.title h2:after,
 		.main-navigation .menu-cta-button a,
 		.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span,
+		.footer-area-top ul#menu-social-menu li:hover i,
 		#scrollUp {
 			background-color: %1$s;
 		}
@@ -107,6 +108,7 @@ class Buziness_Color_Scheme {
 		.footer-area-top .contacts li i,
 		.blog-block:hover .blog-desc h4 a,
 		.widget ul li a:hover,
+		.footer-area-top ul#menu-social-menu li i,
 		.entry-meta span a:hover  {
 			color: %1$s; 
 		}
@@ -164,6 +166,7 @@ class Buziness_Color_Scheme {
 		.nav-links a ,
 		.entry-content a:hover,
 		.footer-area-bottom,
+		.footer-area-top ul#menu-social-menu li:hover i,
 		.footer-area-bottom a {
 			color: %3$s;
 		}

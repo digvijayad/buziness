@@ -13,13 +13,13 @@
  */
 
 get_header(); 
-$post_banner_image = get_theme_mod( 'buziness_page_banner_image' );
+$post_banner_image = get_theme_mod( 'buziness_post_banner_image' );
 
 if(!empty($post_banner_image)){
 	$banner_image = $post_banner_image;
 }
 else {
-	$banner_image = "http://localhost/sbdc/wp-content/uploads/2017/10/banner.jpg";
+	$banner_image = get_theme_mod( 'buziness_page_banner_image' );
 }
 $attachment_id = attachment_url_to_postid( $banner_image );
 $image_array = wp_get_attachment_image_src( $attachment_id, 'buziness_banner_image_size' );
@@ -28,7 +28,7 @@ $image_array = wp_get_attachment_image_src( $attachment_id, 'buziness_banner_ima
 
 		<!-- Breadcrumb-start -->
 		
-		<section class="breadcrumb" <?php echo (!empty($image_array[0])) ? 'style="background: url(' . esc_url($image_array[0]) .');': ''; ?>">
+		<section class="breadcrumb" style="background: url( <?php echo (!empty($image_array[0])) ? esc_url($image_array[0]) .');': (get_template_directory_uri() . '/images/banner.jpg') . ');"' ?>">
 <!-- <section class="breadcrumb" style="background: url( 'http://localhost/sbdc/wp-content/uploads/2017/10/banner.jpg' );"> -->
 			<div class="wrapper">
 				<div class="breadcrumb-menu">

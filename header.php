@@ -25,6 +25,26 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'buziness' ); ?></a>
 	
 		<header id="masthead" class="site-header" >
+			<!-- <div class="top-header">
+				<div class="wrapper">
+
+					
+					<div class="top-social-icon">
+
+						<ul>
+														 
+							<li><a href="http://fghfg" target="_blank"><i class="fa fa-instagram"></i></a></li>
+						 
+							<li><a href="http://youtube.com" target="_blank"><i class="fa fa-youtube"></i></a></li>
+						 
+							<li><a href="http://gfgh" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+						 
+							<li><a href="http://gfdfs" target="_blank"><i class="fa fa-rss"></i></a></li>
+												 
+						</ul>
+					</div>  
+									</div>
+			</div> -->
 			<div class="main-header">
 				<div class="site-branding">
 					<?php

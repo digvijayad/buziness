@@ -49,6 +49,109 @@ function buziness_customize_register( $wp_customize ) {
         $buziness_options_categories[absint($category->cat_ID)] = esc_attr($category->cat_name); 
     }
 
+//     	$wp_customize->add_panel( 'buziness_test_panel', array(
+// 		'title' => esc_html__( 'test page settings' , 'buziness'),
+// 		'description' => esc_html__( 'Change test page settings from here you want', 'buziness' ),
+// 		'priority' => 1,
+// 		'capability' => 'edit_theme_options',
+// 		));
+
+// // Services Section Start
+
+// 	$wp_customize->add_section('buziness_test_section', array(
+// 		'title' 		=> esc_html__('test Settings', 'buziness'),
+// 		'panel'			=> 'buziness_test_panel',
+// 		'priority'		=> 10,
+// 	));
+// 	$wp_customize->add_section('buziness_test2_section', array(
+// 		'title' 		=> esc_html__('test Settings', 'buziness'),
+// 		'panel'			=> 'buziness_test_panel',
+// 		'priority'		=> 10,
+// 	));
+//     $sections = array(
+//         	'buziness_test_section' => array(
+//         		'section' => array(
+//         			'title' => esc_html__('test Settings', 'buziness'),
+//         			'panel' => 'buziness_test_panel'
+//         		), //section 
+//         		'fields' 	=> array(
+// 			    	'buziness_test' => array(
+// 				    	'settings' => array(
+// 					    	'default' => '',
+// 					    	'priority'=> 10,
+// 					    	'capability' => 'edit_theme_options',
+// 					    	'sanitize_callback' => 'buziness_checkbox_sanitize',
+// 					    ),
+// 				    	'controls' => array(
+// 				    		'type'      => 'checkbox',
+// 							'label'     => esc_html__('Check To Activate Services', 'buziness'),
+							
+// 				    	) //controls
+// 			    	), // field id 
+// 	    		)	// fields
+//     		), //section id
+
+//         	//Services Section
+//         	'buziness_services_section' => array(
+//         		'section' => array(
+//         			'title' => esc_html__('Services Settings', 'buziness'),
+//         			'panel' => 'buziness_custom_frontpage_panel'
+//         		), //section 
+//         		'fields' 	=> array(
+
+//         			//Service activate checkbox
+// 			    	'buziness_services_setting_activate' => array(
+// 				    	'settings' => array(
+// 					    	'default' => 1,
+// 					    	'priority'=> ,
+// 					    	'capability' => 'edit_theme_options',
+// 					    	'sanitize_callback' => 'buziness_checkbox_sanitize',
+// 					    ),
+// 				    	'controls' => array(
+// 				    		'type'      => 'checkbox',
+// 							'label'     => esc_html__('Check To Activate Services', 'buziness'),
+							
+// 				    	) //controls
+// 			    	), // field id 
+
+// 			     	// Service title
+// 			    	'buziness_services_title' => array(
+// 				    	'settings' => array(
+// 					    	'default' => '',
+// 					    	'priority'=> 10,
+// 					    	'capability' => 'edit_theme_options',
+// 					    	'sanitize_callback' => 'buziness_checkbox_sanitize',
+// 					    ),
+// 				    	'controls' => array(
+// 				    		'type'      => 'checkbox',
+// 							'label'     => esc_html__('Check To Activate Services', 'buziness'),
+							
+// 				    	) //controls
+// 			    	), // field id 
+
+// 	    		)	// fields
+//     		), //section id
+
+//     ); // section IDS
+
+    // foreach ($sections as $sectionId => $fields) {
+    // 	var_dump($sectionId);
+    // 	$wp_customize->add_section( $sectionId, $fields['section']);
+    // 	foreach ($fields['fields'] as $settingId => $values) {
+    // 		# code...
+    // 		var_dump($settingId);
+    // 		var_dump($values);
+	   //  	$wp_customize->add_setting($settingId, $values['settings']);
+	   //  	$control_args = $values['controls'];
+	   //  	$control_args['settings'] = $settingId;
+	   //  	$control_args['section'] = $sectionId;
+	   //  	$wp_customize->add_control($settingId, $control_args);
+    // 	}
+    	
+    // }
+
+    // var_dump($sections);
+    // wp_die();
 
 	/** Front page panel start */
 	$wp_customize->add_panel( 'buziness_custom_frontpage_panel', array(
@@ -188,21 +291,6 @@ function buziness_customize_register( $wp_customize ) {
 			'section' => 'buziness_call_to_action_1',
 			'settings' => 'buziness_call_to_action_desc'
 		));
-	// $wp_customize->add_setting('buziness_call_to_action_bgcolor',array(
-	// 	'default' => '#000',
-	// 	'sanitize_callback' => 'sanitize_hex_color'
-	// ));
-
-	// $wp_customize->add_control( 
-	// 	new WP_Customize_Color_Control( 
-	// 		$wp_customize, 
-	// 		'buziness_call_to_action_bgcolor', 
-	// 		array(
-	// 			'label'      => __( 'CTA Background Color', 'buziness' ),
-	// 			'section'    => 'buziness_call_to_action_1',
-	// 			'settings'   => 'buziness_call_to_action_bgcolor',
-	// 		) ) 
-	// );
 
 	/*Counter Section Start*/
 	$wp_customize->add_section('buziness_counter_section', array(
@@ -226,7 +314,22 @@ function buziness_customize_register( $wp_customize ) {
 			'settings' => 'buziness_counter_activate'
 		));
 
+	$wp_customize->add_setting('buziness_counter_title',array(
+		'priority' => 1,
+		'default' => esc_html__('Title', 'buziness'),
+		'capability' => 'edit_theme_options',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
 
+	$wp_customize->add_control('buziness_counter_title',
+		array(
+			'type' => 'text',
+			'label' => esc_html__('Counter title','buziness'),
+			'description' => esc_html__('Type to change title', 'buziness'),
+			'section' => 'buziness_counter_section',
+			'settings' => 'buziness_counter_title'
+		));
 
 	$wp_customize->add_setting('buziness_counter_1',array(
 		'priority' => 1,
@@ -325,7 +428,7 @@ Jobs Created | 324', 'buziness'),
     $wp_customize -> add_setting( 'buziness_page_banner_image', 
          array(
             'priority' => 5,
-            'default-image' => get_template_directory_uri() . '/images/banner.jpg',
+            'default' => get_template_directory_uri() . '/images/banner.jpg',
             'capability' => 'edit_theme_options',
             'transport' => 'refresh',
             'sanitize_callback' => 'esc_url_raw'
@@ -370,7 +473,7 @@ Jobs Created | 324', 'buziness'),
 $wp_customize -> add_setting( 'buziness_post_banner_image', 
          array(
             'priority' => 7,
-            'default-image' => get_template_directory_uri() . '/images/banner.jpg',
+            'default' => get_template_directory_uri() . '/images/banner.jpg',
             'capability' => 'edit_theme_options',
             'transport' => 'refresh',
             'sanitize_callback' => 'esc_url_raw'
@@ -479,7 +582,23 @@ $wp_customize->add_control( 'buziness_single_post_layout', array(
 		'settings'  => 'buziness_testimonials_setting_activate'
 		));
 
+	$wp_customize->add_setting('buziness_testimonials_selection', array(
+		'default'           => 'theme',
+		'priority'			=> '',
+		'capability'        => 'edit_theme_options',
+		'sanitize_callback' => 'buziness_sanitize_radio'
+		));
 
+	$wp_customize->add_control('buziness_testimonials_selection', array(
+		'type'			=> 'radio',
+		'label'			=> esc_html__('Choose theme\'s testimonial or a plugin?', 'buziness' ),
+		'section' 		=> 'buziness_testimonials_section',
+		'setting'		=> 'buziness_testimonials_selection',
+		'choices'		=> array(
+			'plugin' 		=> __("Use Plugin for testimonials?", 'buziness'),
+			'theme'			=> __("Use theme for testimonials?", 'buziness'),
+		)
+	));
 	$wp_customize->add_setting('buziness_testimonial_shortcode',array(
 
 		'default' => esc_html__('', 'buziness'),

@@ -18,7 +18,7 @@
 	<footer id="colophon" class="site-footer">
 		<div class="footer-area-top">
 			<div class="footer-wrapper">
-				<div class="footer-box col-3">
+				<div class="footer-box col-3 wow fadeInUp">
 					<?php 
 
 					if( !is_front_page() && is_active_sidebar('footer-1')) {
@@ -29,7 +29,7 @@
 						}
 					}?> 
 				</div>
-				<div class="footer-box col-3">
+				<div class="footer-box col-3  wow fadeInUp">
 					<?php 
 
 					if( !is_front_page() && is_active_sidebar('footer-2')) {
@@ -42,9 +42,8 @@
 
 					?> 
 				</div>
-				<div class="footer-box col-3">
+				<div class="footer-box col-3 wow fadeInUp">
 					<?php 
-
 
 					if( !is_front_page() && is_active_sidebar('footer-3')) {
 						dynamic_sidebar('footer-3');
@@ -59,10 +58,10 @@
 			</div>
 		</div> 
 		<?php if (is_active_sidebar('footer-middle')) { ?>
-		<div class="footer-area-middle">
+		<div class="footer-area-middle ">
         
 		    <div class="footer-wrapper">
-				<div class="footer-box">
+				<div class="footer-box  wow fadeInUp">
 					<?php// if (is_active_sidebar('footer-middle')) { ?>
 						<?php dynamic_sidebar('footer-middle'); ?>
 					<?php//}?> 
@@ -81,12 +80,7 @@
 					<p><?php echo esc_html($copyright) ?></p> 
 				</div> 
 				<div class="site-info">
-					<p>	<!-- 			<a href="<?php ///echo esc_url( __( 'https://wordpress.org/', 'buziness' ) ); ?>">
-		<?php/
-						/* translators: %s: CMS name, i.e. WordPress. */
-						//printf( esc_html__( 'Proudly powered by %s', 'buziness' ), 'WordPress' );
-					?></a> -->
-					<!-- <span class="sep"> | </span> -->
+					<p>	
 					<?php
 						/* translators: 1: Theme name, 2: Theme author. */
 						$my_theme = wp_get_theme();

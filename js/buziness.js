@@ -22,16 +22,14 @@ jQuery(document).ready(function($) {
        
     }
 
-
-
-    if($('.site-header').length){ 
-        var stickyNavTop = $('.site-header').offset().top;
+    if($('.main-header').length){ 
+        var stickyNavTop = $('.main-header').offset().top;
         var stickyNav = function(){
                 var scrollTop = $(window).scrollTop();
                 if (scrollTop > stickyNavTop) {
-                     $('.site-header').addClass('sticky');
+                     $('.main-header').addClass('sticky');
                 } else {
-                    $('.site-header').removeClass('sticky');
+                    $('.main-header').removeClass('sticky');
                 }
             };
         stickyNav(); 
@@ -69,24 +67,32 @@ jQuery(document).ready(function($) {
         $('span.simcal-events-dots b').css('color', "#fff");
     }
 
-    //Banner Slider
-
+    var $listItem = $('.footer-area-top ul.menu-social-menu li');
+    if ($listItem.length) {
+        $listItem.each(function(index){
+            $a = $(this).find('a');
+            $name = $a.text();
+            $link = $a.attr('href');
+            $(this).html('<span> <a href="'+ $link +  '"><i class="fa fa-' + $name+ '"></i></a></span>');
+            });
+        }
+        
+        //Banner Slider
  
- $(".owl-carousel").owlCarousel({ 
-    items:1, 
-    loop:true,
-    nav:true,
-    dots:true, 
-    animateOut: 'slideOutDown',
-    animateIn: 'flipInX',
-    autoplay:false,
-    autoplayTimeout:4000,
-    autoplayHoverPause:false,
-    smartSpeed:450,
-    navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"], 
-    
-}); 
-// Testimonial Slider
+     $(".owl-carousel").owlCarousel({ 
+        items:1, 
+        loop:true,
+        nav:true,
+        dots:true, 
+        animateOut: 'slideOutDown',
+        animateIn: 'flipInX',
+        autoplay:false,
+        autoplayTimeout:4000,
+        autoplayHoverPause:false,
+        smartSpeed:450,
+        navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"], 
+        
+    }); 
 
     //wow
     wow = new WOW({
